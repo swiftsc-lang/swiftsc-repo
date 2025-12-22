@@ -1,0 +1,16 @@
+Package: swiftsc
+Version: 1.0.1
+Architecture: amd64
+Maintainer: SwiftSC-Lang Contributors <swiftsc-lang@proton.me>
+Filename: pool/main/s/swiftsc/swiftsc_1.0.1_amd64.deb
+Size: 374776
+MD5sum: 407a67b4c283a259eb4b9ab89cdadafb
+SHA1: c83ea839bd72f3f370f949c771f2e0ef013b6ebc
+SHA256: b41ef5105087a81cd9b3be3d94a99b48d07cbadc28f581553ae7f5c8e847597b
+Section: devel
+Priority: optional
+Description: Powerful and secure smart contract compiler for WebAssembly.
+ SwiftSC-Lang is a professional-grade compiler ecosystem designed for
+ building secure, gas-metered, and formally verified smart contracts.
+ This package includes the compiler binary, standard library, and documentation.
+
