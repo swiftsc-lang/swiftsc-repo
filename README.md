@@ -8,7 +8,7 @@ This repository hosts the official Debian packages for SwiftSC-Lang.
 Run the following command to add this repository to your APT sources:
 
 ```bash
-echo "deb [trusted=yes] https://swiftsc-lang.github.io/swiftsc-repo stable main" | sudo tee /etc/apt/sources.list.d/swiftsc.list
+echo "deb [trusted=yes arch=amd64] https://swiftsc-lang.github.io/swiftsc-repo stable main" | sudo tee /etc/apt/sources.list.d/swiftsc.list
 ```
 
 > [!NOTE]
