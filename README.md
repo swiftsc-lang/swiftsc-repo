@@ -1,24 +1,17 @@
-# SwiftSC-Lang APT Repository
+# 📦 SwiftSC Repository
 
-This repository hosts the official Debian packages for SwiftSC-Lang.
+The official package repository and registry for SwiftSC modules.
 
-## How to use this repository
+## 🚀 Features
 
-### 1. Add the repository to your system
-Run the following command to add this repository to your APT sources:
+- **Package Hosting**: Secure storage for compiled SwiftSC modules.
+- **APT Repository**: Custom APT repo for distributing the compiler on Debian/Ubuntu.
+- **Versioning**: Integrated version management for the entire ecosystem.
 
-```bash
-echo "deb [trusted=yes arch=amd64] https://swiftsc-lang.github.io/swiftsc-repo stable main" | sudo tee /etc/apt/sources.list.d/swiftsc.list
-```
+## 🤝 Contributing
 
-> [!NOTE]
-> We use `[trusted=yes]` because this repository is currently unsigned. For production use, we recommend signing with GPG.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-### 2. Update and Install
-```bash
-sudo apt update
-sudo apt install swiftsc
-```
+## 📄 License
 
-## Contributing
-To add new packages to this repository, place the `.deb` file in the appropriate `pool/` directory and run `./update-repo.sh`.
+Apache 2.0
