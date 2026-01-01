@@ -1,0 +1,53 @@
+name: Validate APT Packages
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'pool/**'
+
+jobs:
+  validate-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dpkg-dev
+
+      - name: Validate Deb Files
+        run: |
+          echo "🔍 Scanning pool/ for valid Debian packages..."
+          
+          FOUND_FILES=false
+          for deb in pool/*.deb; do
+            [ -e "$deb" ] || continue
+            FOUND_FILES=true
+            
+            echo "----------------------------------------"
+            echo "📦 Checking: $deb"
+            
+            # 1. Verify Archive Integrity
+            if ! dpkg-deb --info "$deb" > /dev/null; then
+               echo "❌ Error: Corrupt or invalid .deb file."
+               exit 1
+            fi
+            
+            # 2. Verify Naming Convention (swiftsc_<ver>_<arch>.deb)
+            BASENAME=$(basename "$deb")
+            if [[ ! "$BASENAME" =~ ^swiftsc_[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9]+)?_amd64\.deb$ ]]; then
+               echo "⚠️  Warning: Filename '$BASENAME' does not match standard pattern 'swiftsc_VER_amd64.deb'"
+            fi
+
+            echo "✅ Package is valid."
+          done
+          
+          if [ "$FOUND_FILES" = false ]; then
+            echo "⚠️ No .deb files found in pool/ directory."
+          fi
+          
+          echo "----------------------------------------"
+          echo "🎉 All packages verified."
