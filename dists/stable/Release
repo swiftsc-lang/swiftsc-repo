@@ -1,24 +1,24 @@
 Architectures: amd64
 Codename: stable
 Components: main
-Date: Thu, 01 Jan 2026 17:59:13 +0000
+Date: Mon, 05 Jan 2026 16:34:27 +0000
 Description: Official SwiftSC-Lang APT Repository
 Label: SwiftSC-Lang
 Origin: SwiftSC-Lang
 Suite: stable
 MD5Sum:
- 3d805a29b67aa0cee619afeb36204b29              198 Release
- c9cef4517cdef49a369e2e14646cc22b              683 main/binary-amd64/Packages
- ddf1ae3c821195bb92f2af74a18e7e38              477 main/binary-amd64/Packages.gz
+ fc68ddf2b261dbd3b6a1c478283a3253              198 Release
+ 70e7f45f360388902076774ba1068fda              683 main/binary-amd64/Packages
+ bfd789605994fbbd2a97292a68c062ce              475 main/binary-amd64/Packages.gz
 SHA1:
- 86746f9796a9738162d1aa2d4f4e32ad02424e78              198 Release
- a5bb1b37a2c65a6f71f2658a7e12cd6e8b42d534              683 main/binary-amd64/Packages
- 7cf622a6d93e05d2949d0dab3e482cf2eb1ecc3d              477 main/binary-amd64/Packages.gz
+ e186f8e2a99c4ca5f71c4f8a0841c44a0ac2bbdb              198 Release
+ 52a87255995806695f3ccebfab36c9074c8fa64b              683 main/binary-amd64/Packages
+ 1ae0fe2b2abe8203c82e6ef0877811d82cc26fbb              475 main/binary-amd64/Packages.gz
 SHA256:
- 3173e9d7b40c472727244b5486c1c81a7fcc95e747a9cc15d374a9d388e3bb35              198 Release
- 2e79ad8ae986a65697ffe53f0fca47c859eea69bab8f2feea2eb50ce1a4706d5              683 main/binary-amd64/Packages
- 2697b9de82462c5ab531cf16e582c9d9426a7d784a24e97bbd3932ec18369315              477 main/binary-amd64/Packages.gz
+ 4a1eabd050c6ec646b370fa94e1cee2b8c2d9bb71b0b16bc9d5b3a659c1ecccb              198 Release
+ 3878092a9b0edd2943e103576c0da50e9f7810aaa02a8ad4dfbb7c2108bf4705              683 main/binary-amd64/Packages
+ 0afb1b666f54c3e481c12851d8310317597b0d4ac15f610ab06993a336907ddf              475 main/binary-amd64/Packages.gz
 SHA512:
- f9981bfd163c2c8abcb7bcbaa468383e88ca9f9b770a0c1fdcd73990b91276ba0c068fc50b6a3ff2bc3eb0b8b0bef3e8e6eb04a01b6e6b8ca9bbdd70c207e1fc              198 Release
- b309abbfce832a1d36851a2b83bbf19b637624fb4769572f5fa78761283ce2a6c28adbe2e5f18c672f55c791bf54866062a8d2072e37e62203a2f774b74dd53c              683 main/binary-amd64/Packages
- ee1d4f44946dc3f956349a4eb6bd14f2d066c708a52be4b45cc8ecb7bdeb19939c12226bf52e6db6f12ff8dd86c35827a4e75b857cee4e10a34e13dc5d03a93c              477 main/binary-amd64/Packages.gz
+ c43a31cafaea309f7986d5d6dc5665c4f06a41c19b8e3522893c0cfb5bc9dc3650696c0651c56813b61b5478639dc47392255524d00860cd153225ea903b7e9f              198 Release
+ 152cb21f91b1d978d46a3088c2b08aed5a26052e294045cb95a8a0549e41749e2a6c0c0abf1e5e8bef8c26c9bb31a19e41bd23c5d295cb8e9f3cc8aee39629f0              683 main/binary-amd64/Packages
+ b626a0fd3af3e5e3cc7728648139da70d1b60d682115fc08e834c533c5325d88856ab8d3c87cda2d6ca2ebbff1d352d5babc20105205843c4f2590622cde55fe              475 main/binary-amd64/Packages.gz
