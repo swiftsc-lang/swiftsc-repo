@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - 'pool/**'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -13,7 +14,7 @@ permissions:
 
 jobs:
   release:
-    if: github.event.pull_request.merged == true
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -40,10 +41,15 @@ jobs:
       - name: Prepare Release Notes
         id: notes
         run: |
-          echo "title=${{ github.event.pull_request.title }}" >> $GITHUB_OUTPUT
-          # Save PR body to a file to handle special characters and newlines correctly
-          cat << 'EOF' > release_notes.md
-          ${{ github.event.pull_request.body }}
+          TITLE="${{ github.event.pull_request.title }}"
+          BODY="${{ github.event.pull_request.body }}"
+          
+          if [ -z "$TITLE" ]; then TITLE="Manual Release: v${{ steps.package.outputs.version }}"; fi
+          if [ -z "$BODY" ] || [ "$BODY" == "null" ]; then BODY="This release was triggered manually via workflow_dispatch."; fi
+          
+          echo "title=$TITLE" >> $GITHUB_OUTPUT
+          cat << EOF > release_notes.md
+          $BODY
           EOF
 
       - name: Create GitHub Release
