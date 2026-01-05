@@ -1,0 +1,71 @@
+name: Auto Release Package
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+    paths:
+      - 'pool/**'
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  release:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Identify New Package
+        id: package
+        run: |
+          # Find the .deb file that was modified/added in this PR
+          DEB_FILE=$(ls pool/*.deb | head -n 1)
+          if [ -z "$DEB_FILE" ]; then
+            echo "❌ No .deb file found in pool/."
+            exit 1
+          fi
+          echo "path=$DEB_FILE" >> $GITHUB_OUTPUT
+          
+          # Extract version from filename (format: swiftsc_VER_arch.deb)
+          # Example: swiftsc_1.0.3-beta_amd64.deb -> 1.0.3-beta
+          VERSION=$(basename "$DEB_FILE" | cut -d'_' -f2)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Prepare Release Notes
+        id: notes
+        run: |
+          echo "title=${{ github.event.pull_request.title }}" >> $GITHUB_OUTPUT
+          # Save PR body to a file to handle special characters and newlines correctly
+          cat << 'EOF' > release_notes.md
+          ${{ github.event.pull_request.body }}
+          EOF
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION="${{ steps.package.outputs.version }}"
+          TAG="v$VERSION"
+          
+          echo "🚀 Creating release $TAG..."
+          
+          # Check if tag already exists (to avoid failure on re-runs)
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "⚠️ Release $TAG already exists. Uploading asset only..."
+            gh release upload "$TAG" "${{ steps.package.outputs.path }}" --clobber
+          else
+            gh release create "$TAG" \
+              --title "${{ steps.notes.outputs.title }}" \
+              --notes-file release_notes.md \
+              "${{ steps.package.outputs.path }}"
+          fi
+
+      - name: Success Message
+        run: |
+          echo "✅ Successfully published v${{ steps.package.outputs.version }} to GitHub Releases"
