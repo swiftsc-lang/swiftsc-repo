@@ -25,8 +25,8 @@ jobs:
       - name: Identify New Package
         id: package
         run: |
-          # Find the .deb file that was modified/added in this PR
-          DEB_FILE=$(ls pool/*.deb | head -n 1)
+          # Find the .deb file recursively (handling nested pool structure)
+          DEB_FILE=$(find pool -name "*.deb" | head -n 1)
           if [ -z "$DEB_FILE" ]; then
             echo "❌ No .deb file found in pool/."
             exit 1

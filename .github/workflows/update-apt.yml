@@ -23,8 +23,8 @@ jobs:
           echo "🔍 Scanning pool/ for valid Debian packages..."
           
           FOUND_FILES=false
-          for deb in pool/*.deb; do
-            [ -e "$deb" ] || continue
+          # Using find to support nested pool structure
+          while IFS= read -r deb; do
             FOUND_FILES=true
             
             echo "----------------------------------------"
@@ -43,7 +43,7 @@ jobs:
             fi
 
             echo "✅ Package is valid."
-          done
+          done < <(find pool -name "*.deb")
           
           if [ "$FOUND_FILES" = false ]; then
             echo "⚠️ No .deb files found in pool/ directory."
