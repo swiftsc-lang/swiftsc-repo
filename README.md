@@ -6,7 +6,7 @@ The official APT repository and binary registry for the SwiftSC smart contract l
 
 ### ⚙️ Install via APT (Linux)
 
-To stay updated with the latest v1.0.3-beta toolchain, add our official repository:
+To stay updated with the latest v1.0.3 toolchain, add our official repository:
 
 ```bash
 # 1. Add the repository to your sources
@@ -22,7 +22,7 @@ sudo apt install swiftsc
 You can also download `.deb` packages directly from the [pool/](pool/) directory or the [GitHub Releases](https://github.com/swiftsc-lang/swiftsc-repo/releases) page.
 
 ```bash
-sudo dpkg -i swiftsc_1.0.3-beta_amd64.deb
+sudo dpkg -i swiftsc_1.0.3_amd64.deb
 ```
 
 ## 🛠️ Repository Structure
