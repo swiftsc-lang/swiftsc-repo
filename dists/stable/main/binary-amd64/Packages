@@ -1,12 +1,12 @@
 Package: swiftsc
-Version: 1.0.3-beta
+Version: 1.0.3
 Architecture: amd64
 Maintainer: SwiftSC-Lang Contributors <swiftsc-lang@proton.me>
-Filename: pool/main/s/swiftsc/swiftsc_1.0.3-beta_amd64.deb
-Size: 726364
-MD5sum: c96f64f7c2380fa2e8b260182cd10a6b
-SHA1: 61c93c72d3895f4a969958b14989439339860b30
-SHA256: 96b9526341bd5111c4b2523f1ab2c1ec508ce05aa194f8554c14be8023fea794
+Filename: pool/main/s/swiftsc/swiftsc_1.0.3_amd64.deb
+Size: 734112
+MD5sum: 6532a6fd1c03c8d6408501712187e924
+SHA1: 6388cf91279cc156cd19adaf052f43aa2f96a1c1
+SHA256: c0eb48680f6005350a6231175f143293d8daacfa261649a6b7fd8c76512d6ff7
 Section: devel
 Priority: optional
 Description: Powerful and secure smart contract compiler for WebAssembly.
